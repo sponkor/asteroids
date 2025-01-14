@@ -41,12 +41,13 @@ def main():
                 pass
             else: (
                 print("Game over!"),
-                pygame.quit()
+                pygame.quit(),
+                quit()
             )
             for bullet in shotGroup:
                 if ast.collision(bullet) == True:
                     bullet.kill()
-                    ast.kill()
+                    ast.split()
                 else: pass
         for obj in drawable:
             obj.draw(screen)
