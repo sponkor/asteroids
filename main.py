@@ -28,6 +28,13 @@ def main():
         
         for obj in updatable:
             obj.update(dt)
+        for ast in AstGroup:
+            if ast.collision(player) == False:
+                pass
+            else: (
+                print("Game over!"),
+                pygame.quit()
+            )
         for obj in drawable:
             obj.draw(screen)
         
