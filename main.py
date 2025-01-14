@@ -43,6 +43,11 @@ def main():
                 print("Game over!"),
                 pygame.quit()
             )
+            for bullet in shotGroup:
+                if ast.collision(bullet) == True:
+                    bullet.kill()
+                    ast.kill()
+                else: pass
         for obj in drawable:
             obj.draw(screen)
         
