@@ -21,8 +21,7 @@ class Asteroid(CircleShape):
             randAngle = random.uniform(20, 50)
             for i in range(0, 2):
                 newast = Asteroid(self.position.x, self.position.y, self.radius - ASTEROID_MIN_RADIUS)
-                if i == 1:
-                    randAngle = -randAngle
+                if i == 1: randAngle = -randAngle
                 newast.velocity = self.velocity.rotate(randAngle)
                 newast.velocity *= 1.2
             self.kill()

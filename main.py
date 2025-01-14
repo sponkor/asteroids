@@ -8,11 +8,12 @@ from circleshape import Shot
 def main():
     pygame.init
     print("Starting asteroids!")
-    print(f"Screen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}")
-    screen, clock, dt, updatable, drawable, astGroup, shotGroup =( 
+    print(f"\nScreen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}")
+    dt, score, screen, clock, updatable, drawable, astGroup, shotGroup =( 
+        0,
+        0,
         pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)),
         pygame.time.Clock(),
-        0,
         pygame.sprite.Group(),
         pygame.sprite.Group(),
         pygame.sprite.Group(),
@@ -40,13 +41,15 @@ def main():
             if ast.collision(player) == False:
                 pass
             else: (
-                print("Game over!"),
+                print("\nGame over!"),
                 pygame.quit(),
+                print(f"\nScore: {int(score)}"),
                 quit()
             )
             for bullet in shotGroup:
                 if ast.collision(bullet) == True:
                     bullet.kill()
+                    score += (100 / ast.radius) * 5
                     ast.split()
                 else: pass
         for obj in drawable:
